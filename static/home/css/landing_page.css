@@ -1,0 +1,76 @@
+
+
+
+.choose-us-section {
+    padding: 0 10px;
+}
+
+.choose-us-section img{
+    height: 80%;
+    margin-left: 50px;
+}
+
+.chooseImg img{
+    width: 80%;
+}
+
+.hero img{
+    height: 500px;
+}
+
+.mainContainer img {
+    border-radius: 50px;
+}
+section {
+    box-sizing: border-box;
+    background-color: aqua;
+    padding: 15px 15px;
+    border-radius: 25px;
+    margin-bottom: 25px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.myCard {
+    padding: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.myCard:hover {
+    box-shadow: none;
+    transition: 0.1s;
+}
+
+.customHeading {
+    /* font-family: "Permanent Marker", cursive; */
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+.typewriter {
+    width: 350px;
+}
+
+.typewriter h1 {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange; /* The typewriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .12em; /* Adjust as needed */
+    animation: 
+      typing 2.5s steps(40, end) infinite alternate,
+      blink-caret .75s step-end infinite;
+  }
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+  }
+  

@@ -1,0 +1,152 @@
+{% extends "patient/patient_layout.html" %}
+
+{% load static %}
+
+{% block title %}
+    Search
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mt-4 mb-3">Search Donations</h2>
+    {% if messages %}
+        <div class="alert alert-primary" role="alert">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+        </div>
+    {% endif %}
+    <form method="get" class="row g-3">
+        {% csrf_token %}
+        <div class="col-md-4">
+            <label for="blood_type" class="form-label">Blood Type</label>
+            <select name="blood_type" id="blood_type" class="form-select">
+                <option value="Any">All</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="organ_needed" class="form-label">Organ Needed</label>
+            <select name="organ_needed" id="organ_needed" class="form-select">
+                <option value="Any">All</option>
+                <option value="Heart">Heart</option>
+                <option value="Liver">Liver</option>
+                <option value="Kidney">Kidney</option>
+                <option value="Lung">Lung</option>
+                <option value="Pancreas">Pancreas</option>
+                <option value="Eyes">Eyes</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+        <div class="col-md-4 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+
+    <h2 class="mt-4 mb-3">Available Organs</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+        {% for donation in donors %}
+        <div class="col mb-4">
+            <div class="card shadow-lg" style="width: 18rem;">
+                <img src="{% if donation.organ_donated == 'Heart' %}{% static 'home/images/heart.jpg' %}{% elif donation.organ_donated == 'Liver' %}{% static 'home/images/liver.jpg' %}{% elif donation.organ_donated == 'Eyes' %}{% static 'home/images/eyes.jpg' %}{% elif donation.organ_donated == 'Kidney' %}{% static 'home/images/kidney.jpg' %}{% elif donation.organ_donated == 'Lung' %}{% static 'home/images/lung.jpg' %}{% elif donation.organ_donated == 'Pancreas' %}{% static 'home/images/pancreas.jpg' %}{% endif %}" class="card-img-top" alt="{{ donation.organ }}" style="width: 100%; height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">Organ: {{ donation.organ_donated }}</h5>
+                    <p class="card-text">Blood Type: {{ donation.blood_type }}</p>
+                    <p class="card-text">Donor: {{ donation.name }}</p>
+                    <p class="card-text">Hospital: {{ donation.hospital }}</p>
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#donorFormModal{{ donation.id }}">
+                        Apply
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="donorFormModal{{ donation.id }}" tabindex="-1" aria-labelledby="donorFormModalLabel{{ donation.id }}" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="donorFormModalLabel{{ donation.id }}">Donate to {{ donation.hospital }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Modal content here -->
+                        <p>Donor: {{ donation.name }}</p>
+                        <p>Email: {{ donation.email }}</p>
+                        <p>Organ: {{ donation.organ_donated }}</p>
+                        <!-- Add more information as needed -->
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="hidden" name="hospital_name" value="{{ donation.hospital }}">
+                            <input type="hidden" name="donor_name" value="{{ donation.name }}">
+                            <input type="hidden" name="organ_donated" value="{{ donation.organ_donated }}">
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="age">Age:</label>
+                                <input type="number" class="form-control" id="age" name="age" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">Gender:</label>
+                                <select class="form-control" id="gender" name="gender" required>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                    <option value="O">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="blood_type">Blood Type:</label>
+                                <select class="form-control" id="blood_type" name="blood_type" required>
+                                    <option value="A+">A Positive</option>
+                                    <option value="A-">A Negative</option>
+                                    <option value="B+">B Positive</option>
+                                    <option value="B-">B Negative</option>
+                                    <option value="AB+">AB Positive</option>
+                                    <option value="AB-">AB Negative</option>
+                                    <option value="O+">O Positive</option>
+                                    <option value="O-">O Negative</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone_number">Phone Number:</label>
+                                <input type="text" class="form-control" id="phone_number" name="phone_number" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address:</label>
+                                <textarea class="form-control" id="address" name="address" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="medical_condition">Medical Condition:</label>
+                                <textarea class="form-control" id="medical_condition" name="medical_condition" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="urgency_level">Urgency Level:</label>
+                                <input type="number" class="form-control" id="urgency_level" name="urgency_level" min="1" max="10" value="1" required>
+                            </div>
+                            <!-- Add input fields for other fields as needed -->
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock content %}

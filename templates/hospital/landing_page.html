@@ -1,0 +1,246 @@
+{% extends 'hospital/layout.html' %}
+{% load static %}
+
+{% block title %}
+  | Home |
+{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'home/css/landing_page.css' %}" />
+{% endblock %}
+
+{% block content %}
+  <div class="container mainContainer mt-5">
+    <!-- Hero section -->
+    <section class="heroSection">
+      <div class="typewriter">
+        <h1>Organ4life</h1>
+      </div>
+    </section>
+    <!-- carousel -->
+    <section class="hero text-center text-white py-5 mb-5">
+      <div class="container">
+        <div id="carouselExample" class="carousel slide">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{% static 'home/images/heart.jpg' %}" class="d-block w-100" alt="..." />
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'home/images/kidney.jpg' %}" class="d-block w-100" alt="Kidney" />
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'home/images/lungs.jpg' %}" class="d-block w-100" alt="..." />
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Facilities provided -->
+    <section class="container py-5 mb-5">
+      <h2 class="text-center customHeading mb-4">Our Facilities</h2>
+      <div class="row mt-5">
+        <div class="col-md-4 mb-4">
+          <div class="text-center">
+            <i class="fas fa-hospital fa-4x mb-3 text-primary"></i>
+            <h3 class="mb-3">State-of-the-Art Facilities</h3>
+            <p>We provide cutting-edge medical facilities equipped with advanced technology for efficient organ donation and transplantation procedures.</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="text-center">
+            <i class="fas fa-users fa-4x mb-3 text-primary"></i>
+            <h3 class="mb-3">Expert Medical Team</h3>
+            <p>Our dedicated team of medical professionals, including surgeons, physicians, and nurses, ensures high-quality care and support throughout the donation process.</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="text-center">
+            <i class="fas fa-heartbeat fa-4x mb-3 text-primary"></i>
+            <h3 class="mb-3">Compassionate Care</h3>
+            <p>We prioritize compassionate care and provide emotional support to donors, recipients, and their families throughout their journey.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Organ Donation -->
+    <section class="about-section py-5 mb-5">
+      <div class="container">
+        <h2 class="text-center customHeading mb-4">About Organ Donation</h2>
+        <p class="text-center">
+          Organ donation is an act of altruism, compassion, and generosity that has the power to save and transform lives. Every year, thousands of people around the world await organ transplants, hoping for a second chance at life. Yet, the demand for organs far outweighs the supply, leading to lengthy waiting lists and, tragically, preventable deaths. <br /> <strong>In this article, we delve into the significance of organ donation, its impact on individuals and communities, and why everyone should consider registering as an organ donor.</strong>
+        </p>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card myCard mb-4">
+                <div class="card-header">
+                  <i class="fas fa-gift"></i> The Gift of Life
+                </div>
+                <div class="card-body">
+                  <p class="card-text">Organ donation is the ultimate gift—a gift that has the potential to give someone a new lease on life. For individuals suffering from organ failure, such as heart, lung, liver, or kidney failure, an organ transplant may be their only hope for survival. Whether it's a child in need of a heart, a parent awaiting a kidney, or a friend in desperate need of a liver, the gift of an organ can mean the difference between life and death.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card myCard mb-4">
+                <div class="card-header">
+                  <i class="fas fa-heartbeat"></i> Saving Lives, One Donation at a Time
+                </div>
+                <div class="card-body">
+                  <p class="card-text">The impact of organ donation extends far beyond the recipient. It touches the lives of families, friends, and entire communities. Each organ donor has the power to save multiple lives. For instance, a single donor can provide organs such as the heart, lungs, liver, kidneys, pancreas, and intestines, each going to a different recipient in need. Additionally, tissue donation—such as corneas, skin, bone, and heart valves—can improve the quality of life for countless others. By saying yes to organ donation, individuals have the opportunity to leave behind a legacy of hope and healing.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card myCard mb-4">
+                <div class="card-header">
+                  <i class="fas fa-ban"></i> Breaking Down Myths and Misconceptions
+                </div>
+                <div class="card-body">
+                  <p class="card-text">Despite the life-saving potential of organ donation, there are still myths and misconceptions that surround the topic. One common myth is the belief that medical professionals won't work as hard to save the lives of registered organ donors. However, this couldn't be further from the truth. Healthcare providers are dedicated to saving lives, regardless of a person's organ donor status. Another misconception is the fear of disfigurement or disfigurement post-mortem. In reality, organ donation is a respectful and carefully coordinated process that preserves the dignity of the donor. It's important to educate ourselves and others about the facts of organ donation to dispel these myths and encourage more people to become donors.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card myCard mb-4">
+                <div class="card-header">
+                  <i class="fas fa-user-plus"></i> Becoming an Organ Donor
+                </div>
+                <div class="card-body">
+                  <p class="card-text">Becoming an organ donor is a simple yet profound act that anyone can do to make a difference. In many countries, individuals can register as organ donors through their driver's license or national identification card. Alternatively, there are online registries and organizations dedicated to facilitating organ donation. It's essential to discuss your decision with your loved ones so they understand your wishes and can support them in the event of your passing.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="choose-us-section py-5 mb-5" id="about">
+      <div class="container">
+        <h2 class="text-center customHeading mb-5">Why Choose Us</h2>
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="myCard card mb-4">
+                    <h5 class="card-header"><i class="fas fa-handshake"></i> Trustworthy and Credible</h5>
+                    <div class="card-body">
+                      <p class="card-text">Adherence to the highest standards of medical ethics and regulatory compliance.</p>
+                    </div>
+                  </div>
+                  <div class="myCard card mb-4">
+                    <h5 class="card-header"><i class="fas fa-hands-helping"></i> Compassionate and Supportive</h5>
+                    <div class="card-body">
+                      <p class="card-text">Guidance, resources, and counseling provided to donors and their families.</p>
+                    </div>
+                  </div>
+                  <div class="myCard card mb-4">
+                    <h5 class="card-header"><i class="fas fa-cogs"></i> Efficient and Transparent Process</h5>
+                    <div class="card-body">
+                      <p class="card-text">Streamlined donation process with transparency from registration to allocation.</p>
+                    </div>
+                  </div>
+                  <div class="myCard card mb-4">
+                    <h5 class="card-header"><i class="fas fa-laptop-medical"></i> Advanced Technology and Infrastructure</h5>
+                    <div class="card-body">
+                      <p class="card-text">Cutting-edge technology and infrastructure ensuring safe and effective handling of donations.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="myCard card mb-4">
+                    <h5 class="card-header"><i class="fas fa-user-md"></i> Patient-Centered Approach</h5>
+                    <div class="card-body">
+                      <p class="card-text">Commitment to matching donors with recipients in a timely and equitable manner.</p>
+                    </div>
+                  </div>
+                  <div class="myCard card mb-4">
+                    <h5 class="card-header"><i class="fas fa-users"></i> Community Engagement and Education</h5>
+                    <div class="card-body">
+                      <p class="card-text">Empowering individuals to make informed decisions and become advocates for organ donation.</p>
+                    </div>
+                  </div>
+                  <div class="myCard card mb-4">
+                    <h5 class="card-header"><i class="fas fa-heart"></i> Positive Impact and Legacy</h5>
+                    <div class="card-body">
+                      <p class="card-text">Opportunity to leave behind a lasting legacy of hope and healing by saving lives.</p>
+                    </div>
+                  </div>
+                  <div class="myCard card mb-4">
+                    <h5 class="card-header"><i class="fas fa-chart-line"></i> Continuous Improvement and Innovation</h5>
+                    <div class="card-body">
+                      <p class="card-text">Commitment to enhancing the effectiveness and efficiency of organ donation processes.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4 chooseImg">
+            <img class="img-fluid" src="https://images.pexels.com/photos/5114952/pexels-photo-5114952.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stories of Hope -->
+    <section class="stories-section py-5 mb-5">
+      <div class="container">
+        <h2 class="text-center customHeading mb-4">Stories of Hope</h2>
+        <p class="text-center">Real-life stories of patients who have received organ transplants and how it changed their lives. Inspirational images or videos accompanying each story.</p>
+
+        <div class="row mb-5">
+          <div class="col-md-6">Sarah was born with a congenital condition that caused her vision to deteriorate rapidly. By the age of 25, she was legally blind. Everyday tasks became challenges, and she struggled to maintain her independence. However, her life took a dramatic turn when she received a corneal transplant. Suddenly, Sarah could see the world with clarity for the first time in years. The colors were vibrant, faces were clear, and she could navigate her surroundings confidently. With tears of joy, Sarah embarked on a journey to embrace every moment of her newfound sight.</div>
+          <div class="col-md-6">
+            <img class="img-fluid" src="https://images.unsplash.com/photo-1550791871-0bcd47c97881?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+          </div>
+        </div>
+
+        <div class="row mb-5">
+          <div class="col-md-6">
+            <img src="https://images.unsplash.com/photo-1606166187734-a4cb74079037?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHBhdGllbnR8ZW58MHx8MHx8fDA%3D" alt="" class="img-fluid" />
+          </div>
+          <div class="col-md-6">
+            <p>Mark was diagnosed with end-stage liver disease and was told he had only months to live without a transplant. His health rapidly declined, and he spent most of his days in the hospital, hooked up to machines. His family feared they would lose him. Then, a matching liver became available. After the successful transplant, Mark's energy returned, and he regained his zest for life. He began to appreciate the simple joys, like spending time with his loved ones and feeling the warmth of the sun on his face. Mark vowed to make the most of his second chance at life, spreading awareness about organ donation and cherishing every moment.</p>
+          </div>
+        </div>
+
+        <div class="row mb-5">
+          <div class="col-md-6 d-flex align-items-center">
+            <p>Emma was a vibrant teenager who dreamed of becoming a professional dancer. However, her dreams were shattered when she was diagnosed with a rare autoimmune disease that attacked her joints, leaving her wheelchair-bound. Despite her condition, Emma remained determined to dance again. Her prayers were answered when she received a double knee transplant. Through grueling rehabilitation, Emma relearned how to walk and eventually dance. With each graceful movement, she felt gratitude for the donor who gave her the gift of mobility. Emma's story inspired many others facing similar challenges, showing them that with resilience and a fighting spirit, anything is possible.</p>
+          </div>
+          <div class="col-md-6">
+            <img src="https://images.pexels.com/photos/7153942/pexels-photo-7153942.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" class="img-fluid" style="height: 700px" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-us mb-5" id="contact-us">
+      <div class="container">
+        <h2>Contact Us</h2>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p>Email: organ4life@example.com</p>
+        <p>Phone: +123 456 7890</p>
+      </div>
+    </section>
+  </div>
+{% endblock %}

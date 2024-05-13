@@ -1,0 +1,53 @@
+{% extends "patient/patient_layout.html" %}
+
+{% block title %}
+    Result
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mt-4 mb-3">Patient List</h2>
+    {% if matching_patients %}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Blood Type</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Address</th>
+                    <th>Organ Needed</th>
+                    <th>Donor Name</th>
+                    <th>Hospital</th>
+                    <th>Status</th>
+                    <!-- You can add more columns here as needed -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for patient in matching_patients %}
+                    <tr class="{% if patient.status == 'Pending' %}table-warning{% elif patient.status == 'Accepted' %}table-success{% elif patient.status == 'Rejected' %}table-danger{% endif %}">
+                        <td>{{ patient.name }}</td>
+                        <td>{{ patient.age }}</td>
+                        <td>{{ patient.get_gender_display }}</td>
+                        <td>{{ patient.get_blood_type_display }}</td>
+                        <td>{{ patient.email }}</td>
+                        <td>{{ patient.phone_number }}</td>
+                        <td>{{ patient.address }}</td>
+                        <td>{{ patient.organ_needed }}</td>
+                        <td>{{ patient.donor_name }}</td>
+                        <td>{{ patient.hospital }}</td>
+                        <td>{{ patient.status }}</td>
+                        <!-- Add more columns as needed -->
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-info" role="alert">
+            No matching donors found.
+        </div>
+    {% endif %}
+</div>
+{% endblock content %}

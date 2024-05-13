@@ -1,0 +1,45 @@
+{% extends "donor/donor_layout.html" %}
+{% load static %}
+
+{% block title %}
+    Home | Donor
+{% endblock title %}
+
+{% block content %}
+
+  <section class="heroSection container mt-5 mb-5">
+    <div class="typewriter">
+      <h1>Welcome Donor</h1>
+    </div>
+  </section>
+    <div class="text-center mb-5" style="height: 500px; background-image: url('{% static "donor/images/donorJumbotron.jpg" %}'); background-size: cover; background-position: center; padding: 200px 0;">
+        <h1 class="display-4 fw-bolder">Be a Hero, Be a Donor</h1>
+        <p class="lead text-black">Make a difference. Register as an organ donor today.</p>
+        {% if user.is_authenticated %}
+          <a class="btn btn-primary btn-lg" href="{% url 'hospital:custom_logout' %}">Logout</a>
+        {% else %}
+          <a class="btn btn-primary btn-lg" href="{% url 'hospital:register' %}" role="button">Register Now</a>
+        {% endif %}
+    </div>
+  
+  <div class="container">
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Why Donate?</h2>
+          <p>Organ donation saves lives. By registering as an organ donor, you can give someone a second chance at life.</p>
+          <p>Every day, people die waiting for an organ transplant. Your decision to donate could give hope to those in need.</p>
+        </div>
+        <div class="col-md-6">
+          <h2>How to Register?</h2>
+          <p>Registering as an organ donor is easy. Click on the button below to fill out the registration form.</p>
+          <a class="btn btn-secondary" href="{% url 'hospital:register' %}" role="button">Register Now</a>
+        </div>
+      </div>
+    </div>
+  
+    
+  
+  </div>
+    
+{% endblock content %}

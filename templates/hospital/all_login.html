@@ -1,0 +1,36 @@
+{% extends "hospital/layout.html" %}
+{% load static %}
+
+{% block title %}
+    Login Here
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-5 d-flex justify-content-between">
+        <!-- Donor Login Card -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'home/images/donor.png' %}" class="card-img-top" alt="Donor Image">
+                <div class="card-body">
+                    <h5 class="card-title">User Login</h5>
+                    <p class="card-text">Login as a User to manage your actions.</p>
+                    <a href="{% url "hospital:login" %}" class="btn btn-primary">Login</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Login Card -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'home/images/admin.png' %}" class="card-img-top" alt="Admin Image">
+                <div class="card-body">
+                    <h5 class="card-title">Admin Login</h5>
+                    <p class="card-text">Login as an admin to manage the website.</p>
+                    <a href="/admin" class="btn btn-primary">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

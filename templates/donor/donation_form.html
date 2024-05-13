@@ -1,0 +1,125 @@
+{% extends "donor/donor_layout.html" %}
+{% load static %}
+
+{% block title %}
+  Donate Here
+{% endblock title %}
+
+{% comment %} {% block extra_css %}
+  <link rel="stylesheet" href="{% static "donor/css/donation_form.css" %}">
+{% endblock extra_css %} {% endcomment %}
+
+{% block content %}
+<div class="container mt-5 ps-5">
+  {% if messages %}
+        <div class="alert alert-primary" role="alert">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+        </div>
+  {% endif %}
+    <h2 class="mt-4 mb-5">Select Hospital for Donation</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 mt-5 g-4">
+        {% for hospital in hospitals %}
+            <div class="col mb-4">
+                <div class="card shadow-lg">
+                    {% if hospital.hospital_image %}
+                        <img src="{{ hospital.hospital_image.url }}" class="card-img-top" alt="Hospital Image" style="width: 100%; height: 200px; object-fit: cover;">
+                    {% else %}
+                        <p>No image available</p>
+                    {% endif %}
+                    <div class="card-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            <h5 class="card-title">{{ hospital.name }}</h5>
+                            <p class="card-text">{{ hospital.location }}</p>
+                            <p class="card-text">Contact: {{ hospital.contact_number }}</p>
+                            <input type="hidden" name="hospital" value="{{ hospital.id }}">
+                            <button type="button" class="btn btn-primary open-donor-form" data-bs-toggle="modal" data-bs-target="#donorFormModal{{ hospital.id }}">
+                                Open Donor Form
+                              </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="donorFormModal{{ hospital.id }}" tabindex="-1" aria-labelledby="donorFormModalLabel{{ hospital.id }}" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="donorFormModalLabel{{ hospital.id }}">Donate to {{ hospital.name }}</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="hidden" name="hospital_name" value="{{ hospital.name }}">
+                            <div class="form-group">
+                              <label for="name">Name:</label>
+                              <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="age">Age:</label>
+                              <input type="number" class="form-control" id="age" name="age" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="gender">Gender:</label>
+                              <select class="form-control" id="gender" name="gender" required>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                                <option value="O">Other</option>
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <label for="blood_type">Blood Type:</label>
+                              <select class="form-control" id="blood_type" name="blood_type" required>
+                                <option value="A+">A Positive</option>
+                                <option value="A-">A Negative</option>
+                                <option value="B+">B Positive</option>
+                                <option value="B-">B Negative</option>
+                                <option value="AB+">AB Positive</option>
+                                <option value="AB-">AB Negative</option>
+                                <option value="O+">O Positive</option>
+                                <option value="O-">O Negative</option>
+                              </select>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="organ_donated">Organ Donated:</label>
+                              <select class="form-control" id="organ_donated" name="organ_donated" required>
+                                <option value="" disabled selected>Select</option>
+                                <option value="Heart">Heart</option>
+                                <option value="Liver">Liver</option>
+                                <option value="Kidney">Kidney</option>
+                                <option value="Lung">Lung</option>
+                                <option value="Pancreas">Pancreas</option>
+                                <option value="Eyes">Eyes</option>
+                                <!-- Add more options as needed -->
+                              </select>
+                          </div>
+                            <div class="form-group">
+                              <label for="email">Email:</label>
+                              <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="phone_number">Phone Number:</label>
+                              <input type="text" class="form-control" id="phone_number" name="phone_number" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="address">Address:</label>
+                              <textarea class="form-control" id="address" name="address" required></textarea>
+                            </div>
+                            <div class="form-group">
+                              <label for="profile_picture">Profile Picture:</label>
+                              <input type="file" class="form-control-file" id="profile_picture" name="profile_picture">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
